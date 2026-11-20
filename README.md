@@ -1,99 +1,122 @@
-Docker Hub and Apache Deployment Assignment
+# Docker Image Management and Apache Deployment
 
-Project Overview
+## Project Overview
 
-This project demonstrates Docker image management, uploading an image to Docker Hub, pulling it on a separate AWS EC2 machine, deploying the container on port 80, and verifying Apache HTTP Server.
+This project covers the Docker practical tasks from Assignments 2 and 3, along with additional Docker Hub and AWS EC2 deployment work.
 
-Technologies Used
+## Technologies Used
 
 - Docker
 - Docker Hub
+- Ubuntu
+- Apache HTTP Server
 - AWS EC2
 - Amazon Linux 2023
-- Apache HTTP Server
 - Nginx
 
-Docker Hub Repository
+## Assignment 2 and Assignment 3: Docker Image and Apache Deployment
 
-Repository:
+### Objectives
+
+1. Save the Docker image created in Assignment 1.
+2. Launch a new container using the saved Docker image.
+3. Map host port 81 to the appropriate container port.
+4. Enter the container and start the Apache2 service.
+5. Verify the Apache web page in a browser.
+
+### Implementation
+
+The Docker image created during Assignment 1 was saved and reused to launch a new container.
+
+The container was configured to make the Apache service accessible through host port 81. Apache2 was started inside the container.
+
+### Browser Verification
+
+Open the following address in a browser:
+
+http://localhost:81
+
+The Apache web page should be displayed when the container and Apache service are running.
+
+Note: The exact image name, container name, and container port should match the practical commands and screenshots.
+
+## Additional Practical Work: Docker Hub and AWS EC2 Deployment
+
+### Docker Hub Repository
+
 https://hub.docker.com/r/amitkumardevops2026/amit-devops-website-apache-backup
 
-Image:
+Docker Image:
 
 amitkumardevops2026/amit-devops-website-apache-backup:v1
 
-Implementation
+### 1. Upload Image to Docker Hub
 
-1. Upload Image to Docker Hub
+    docker tag amit-devops-website-apache-backup:v1 amitkumardevops2026/amit-devops-website-apache-backup:v1
 
-docker tag amit-devops-website-apache-backup:v1 amitkumardevops2026/amit-devops-website-apache-backup:v1
+    docker push amitkumardevops2026/amit-devops-website-apache-backup:v1
 
-docker push amitkumardevops2026/amit-devops-website-apache-backup:v1
-
-2. Connect to AWS EC2
+### 2. Connect to AWS EC2
 
 Connected to a separate Amazon Linux 2023 EC2 machine using AWS Systems Manager Session Manager.
 
 Verify Docker:
 
-docker --version
+    docker --version
 
-3. Pull Image from Docker Hub
+### 3. Pull Image from Docker Hub
 
-sudo docker pull amitkumardevops2026/amit-devops-website-apache-backup:v1
+    sudo docker pull amitkumardevops2026/amit-devops-website-apache-backup:v1
 
-4. Deploy Container on Port 80
+### 4. Deploy Container on Port 80
 
-sudo docker run -d --name intellipaat-apache-port80-ec2 -p 80:8080 amitkumardevops2026/amit-devops-website-apache-backup:v1 sh -c '/usr/sbin/httpd -DFOREGROUND & exec nginx -g "daemon off;"'
+    sudo docker run -d --name intellipaat-apache-port80-ec2 -p 80:8080 amitkumardevops2026/amit-devops-website-apache-backup:v1 sh -c '/usr/sbin/httpd -DFOREGROUND & exec nginx -g "daemon off;"'
 
 Port Mapping:
 
 - EC2 Host Port: 80
-- Container Apache Port: 8080
+- Container Port: 8080
 
-5. Verify Docker Container
+### 5. Verify Docker Container
 
-sudo docker ps
+    sudo docker ps
 
-Container status was verified as running with port mapping:
-"0.0.0.0:80->8080/tcp"
+Container port mapping verified:
 
-6. Verify Apache HTTP Server
+    0.0.0.0:80->8080/tcp
 
-sudo docker exec intellipaat-apache-port80-ec2 wget -qO- http://localhost:8080
+### 6. Verify Apache HTTP Server
 
-Expected output:
+    sudo docker exec intellipaat-apache-port80-ec2 wget -qO- http://localhost:8080
 
-<title>It works! Apache httpd</title>
-<p>It works!</p>
+Expected response includes:
 
-7. Browser Verification
+    <title>It works! Apache httpd</title>
+    <p>It works!</p>
 
-Opened the EC2 Public IPv4 address in a web browser:
+### 7. Browser Verification
 
-"http://YOUR-EC2-PUBLIC-IP"
+The EC2 Public IPv4 address was opened in a browser:
 
-The Apache welcome page displayed successfully.
+    http://YOUR-EC2-PUBLIC-IP
 
-Evidence Screenshots
+The Apache welcome page was displayed successfully.
 
-The following screenshots document the completed practical:
+## Evidence Screenshots
 
-1. "01-dockerhub-v1-image.png" – Docker Hub image and v1 tag.
-2. "02-ec2-docker-port80.png" – EC2 Docker container and port mapping.
-3. "03-apache-service-verification.png" – Apache HTTP response.
-4. "04-apache-public-ip-browser.png" – Apache page accessed using EC2 Public IP.
+The repository contains screenshots documenting Docker image management, EC2 container deployment, Apache response verification, and browser access.
 
-Final Result
+## Final Result
 
-Status: Successfully Completed
+The practical work demonstrates:
 
-- Docker image uploaded to Docker Hub.
-- Image pulled onto a separate AWS EC2 machine.
-- Container deployed successfully.
-- Apache HTTP Server verified.
-- Website accessed through EC2 Public IPv4 address on port 80.
+- Saving and reusing Docker images.
+- Launching containers and configuring port mapping.
+- Starting and verifying Apache HTTP Server.
+- Uploading Docker images to Docker Hub.
+- Pulling images onto a separate AWS EC2 machine.
+- Deploying and verifying a container through the EC2 public IP.
 
-Conclusion
+## Conclusion
 
-This project demonstrates practical skills in Docker image management, Docker Hub, AWS EC2, container deployment, port mapping, Apache HTTP Server verification, and remote web application access.
+This project demonstrates practical experience with Docker image management, container deployment, Apache HTTP Server, port mapping, Docker Hub, and AWS EC2.
