@@ -121,8 +121,6 @@ The practical work demonstrates:
 
 This project demonstrates practical experience with Docker image management, container deployment, Apache HTTP Server, port mapping, Docker Hub, and AWS EC2.
 
-## Docker Apache Port 81 Assignment
+## Jenkins Git Push Trigger Test
 
-This is my Docker assignment.
-
-Jenkins Git Push Trigger Test.
+This line is added to verify automatic Jenkins pipeline triggering when code is pushed to the develop branch.
