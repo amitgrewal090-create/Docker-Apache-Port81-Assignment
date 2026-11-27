@@ -124,3 +124,6 @@ This project demonstrates practical experience with Docker image management, con
 ## Jenkins Git Push Trigger Test
 
 This line is added to verify automatic Jenkins pipeline triggering when code is pushed to the develop branch.
+
+Testing Jenkins webhook after reconnecting ngrok.
+
