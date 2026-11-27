@@ -128,3 +128,5 @@ GitHub Webhook Test - 26 November 2026
 This change verifies automatic Jenkins pipeline triggering on develop branch push.
 
 Testing Jenkins webhook after reconnecting ngrok.
+
+Testing automatic Jenkins trigger - Assignment 2.
